@@ -16,15 +16,20 @@ NS_ASSUME_NONNULL_BEGIN
                             place:(NSString *)aPlace
                              time:(NSDate *)aTime
                          latitude:(double)aLatitude
-                        longitude:(double)aLongitude;
+                        longitude:(double)aLongitude
+                             type:(NSString *)aType
+                            alert:(nullable NSString *)anAlert NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (nullable instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @property (nonatomic, readonly) double magnitude;
 @property (nonatomic, readonly, copy) NSString *place;
 @property (nonatomic, readonly) NSDate *time;
 @property (nonatomic, readonly) double latitude;
 @property (nonatomic, readonly) double longitude;
+
+@property (nonatomic, readonly, copy) NSString *type;
+@property (nonatomic, readonly, copy, nullable) NSString *alert;
 
 @end
 
