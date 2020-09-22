@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
                          latitude:(double)aLatitude
                         longitude:(double)aLongitude;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @property (nonatomic, readonly) double magnitude;
 @property (nonatomic, readonly, copy) NSString *place;
 @property (nonatomic, readonly) NSDate *time;
