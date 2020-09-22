@@ -8,7 +8,17 @@
 
 #import "FirstResponder.h"
 
+// Optional, since we are using @synthesize
+//@interface FirstResponder () {
+//    NSString *myInternalName;
+//}
+//
+//@end
+
 @implementation FirstResponder
+
+//@synthesize name = _name; // Default
+@synthesize name = myInternalName;
 
 // myFirstResponder.name = @"Dimitri";
 // [myFirstResponder setName:@"Dimitri"];
@@ -20,9 +30,16 @@
 {
     // willSet
     
-    _name = aName.copy;
+    myInternalName = aName.copy;
     
     // didSet
+}
+
+- (NSString *)name
+{
+    // willGet
+    
+    return myInternalName.copy;
 }
 
 @end
