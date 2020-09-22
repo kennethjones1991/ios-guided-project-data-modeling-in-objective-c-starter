@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "LSILog.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSLog(@"Hey Quakes!");
 }
 
 
