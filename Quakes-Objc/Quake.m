@@ -61,8 +61,8 @@
     NSNumber *longitudeNumber = nil;
     
     if (coordinates.count >= 2) {
-        latitudeNumber = [coordinates objectAtIndex:0];
-        longitudeNumber = [coordinates objectAtIndex:1];
+        longitudeNumber = [coordinates objectAtIndex:0];
+        latitudeNumber = [coordinates objectAtIndex:1];
         if (![latitudeNumber isKindOfClass:NSNumber.class]) return nil;
         if (![longitudeNumber isKindOfClass:NSNumber.class]) return nil;
     }
