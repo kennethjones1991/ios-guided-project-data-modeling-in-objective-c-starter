@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "LSIFileHelper.h"
+#import "LSILog.h"
 
 @interface Quakes_ObjcTests : XCTestCase
 
@@ -16,7 +18,11 @@
 
 - (void)testQuakeParsing
 {
+    NSData *quakeData = loadFile(@"Quake.json", Quakes_ObjcTests.class);
+//    NSLog(@"🤖 Quake (as data): %@", quakeData);
     
+//    NSString *quakeJSONString = [[NSString alloc] initWithData:quakeData encoding:NSUTF8StringEncoding];
+//    NSLog(@"🤖 Quake (as string): %@", quakeJSONString);
 }
 
 @end
