@@ -7,10 +7,10 @@
 
 #import "LSIErrors.h"
 
-NSString * const LSIErrorDomain = @"LSIErrorDomain";
+NSString *const LSIErrorDomain = @"LSIErrorDomain";
 
 NSError *errorWithMessage(NSString *message, NSInteger errorCode) {
-    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : message };
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : message};
     NSError *error = [NSError errorWithDomain:LSIErrorDomain code:LSIAPIError userInfo:userInfo];
     return error;
 }
