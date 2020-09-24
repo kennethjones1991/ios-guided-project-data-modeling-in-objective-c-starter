@@ -13,6 +13,7 @@
 		879AB7132519A85C0042B236 /* QuakeWithNullMag.json in Resources */ = {isa = PBXBuildFile; fileRef = 879AB7122519A85C0042B236 /* QuakeWithNullMag.json */; };
 		879AB7142519A85C0042B236 /* QuakeWithNullMag.json in Resources */ = {isa = PBXBuildFile; fileRef = 879AB7122519A85C0042B236 /* QuakeWithNullMag.json */; };
 		87BC87E8251C39880036E239 /* NSDateInterval+DayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BC87E7251C39880036E239 /* NSDateInterval+DayAdditions.m */; };
+		87BC87ED251C3EDA0036E239 /* QuakeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BC87EC251C3EDA0036E239 /* QuakeFetcher.m */; };
 		BDFC8F8223FDA09F00A39B21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFC8F8123FDA09F00A39B21 /* AppDelegate.m */; };
 		BDFC8F8523FDA09F00A39B21 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFC8F8423FDA09F00A39B21 /* SceneDelegate.m */; };
 		BDFC8F8823FDA09F00A39B21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFC8F8723FDA09F00A39B21 /* ViewController.m */; };
@@ -53,6 +54,8 @@
 		879AB7122519A85C0042B236 /* QuakeWithNullMag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuakeWithNullMag.json; sourceTree = "<group>"; };
 		87BC87E6251C39880036E239 /* NSDateInterval+DayAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateInterval+DayAdditions.h"; sourceTree = "<group>"; };
 		87BC87E7251C39880036E239 /* NSDateInterval+DayAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateInterval+DayAdditions.m"; sourceTree = "<group>"; };
+		87BC87EB251C3EDA0036E239 /* QuakeFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuakeFetcher.h; sourceTree = "<group>"; };
+		87BC87EC251C3EDA0036E239 /* QuakeFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuakeFetcher.m; sourceTree = "<group>"; };
 		BDFC8F7D23FDA09F00A39B21 /* Quakes-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quakes-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFC8F8023FDA09F00A39B21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BDFC8F8123FDA09F00A39B21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				879AB70E2519A7160042B236 /* QuakeResults.m */,
 				87BC87E6251C39880036E239 /* NSDateInterval+DayAdditions.h */,
 				87BC87E7251C39880036E239 /* NSDateInterval+DayAdditions.m */,
+				87BC87EB251C3EDA0036E239 /* QuakeFetcher.h */,
+				87BC87EC251C3EDA0036E239 /* QuakeFetcher.m */,
 				BDFC8F8923FDA09F00A39B21 /* Main.storyboard */,
 				BDFC8F8C23FDA0A100A39B21 /* Assets.xcassets */,
 				BDFC8F8E23FDA0A100A39B21 /* LaunchScreen.storyboard */,
@@ -289,6 +294,7 @@
 				BDFC8FB723FDA12B00A39B21 /* LSIErrors.m in Sources */,
 				BDFC8F8223FDA09F00A39B21 /* AppDelegate.m in Sources */,
 				879AB70525198D950042B236 /* FirstResponder.m in Sources */,
+				87BC87ED251C3EDA0036E239 /* QuakeFetcher.m in Sources */,
 				BDFC8F9323FDA0A100A39B21 /* main.m in Sources */,
 				BDFC8F8523FDA09F00A39B21 /* SceneDelegate.m in Sources */,
 			);
