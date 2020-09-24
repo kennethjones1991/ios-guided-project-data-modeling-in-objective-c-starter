@@ -72,6 +72,22 @@
     result = self.blockPropertyName(5, 8);
     NSLog(@"The new result is now: %d", result);
     NSLog(@"c is now: %d", c);
+    
+    // 1.
+    [self doWorkWithOperation:^int(int a, int b) {
+        // 3.
+        return a*3 - b*2;
+    }];
+    // 6.
+}
+
+- (void)doWorkWithOperation:(int (^)(int a, int b))operation
+{
+    // 2.
+    int result = operation(5, 7);
+    // 4.
+    NSLog(@"The operation gave back: %d", result);
+    // 5.
 }
 
 
