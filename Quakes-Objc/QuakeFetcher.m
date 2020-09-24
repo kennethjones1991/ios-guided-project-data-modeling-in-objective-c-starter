@@ -25,7 +25,24 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
 {
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:QuakeFetcherBaseURLString];
     
+    NSISO8601DateFormatter *formatter = [[NSISO8601DateFormatter alloc] init];
     
+    NSString *startTimeString = [formatter stringFromDate:interval.startDate];
+    NSString *endTimeString = [formatter stringFromDate:interval.endDate];
+    
+    urlComponents.queryItems = @[
+        [NSURLQueryItem queryItemWithName:@"format" value:@"geojson"],
+        [NSURLQueryItem queryItemWithName:@"starttime" value:startTimeString],
+        [NSURLQueryItem queryItemWithName:@"endtime" value:endTimeString],
+    ];
+    
+    NSURL *url = urlComponents.URL;
+    NSLog(@"Fetching Quakes: %@", url);
+    
+    NSURLSessionDataTask *dataTask = [NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        <#code#>
+    }];
+    [dataTask resume];
 }
 
 @end
