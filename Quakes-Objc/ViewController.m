@@ -10,6 +10,7 @@
 #import "LSILog.h"
 #import "FirstResponder.h"
 #import "NSDateInterval+DayAdditions.h"
+#import "QuakeFetcher.h"
 
 typedef int(^ViewControllerOperationBlock)(int a, int b);
 
@@ -88,6 +89,11 @@ typedef int(^ViewControllerOperationBlock)(int a, int b);
     NSDateInterval *dateInterval = [NSDateInterval lsi_dateIntervalByAddingDays:5];
     
     NSLog(@"The interval is %@", dateInterval);
+    
+    [QuakeFetcher fetchQuakesWithCompletionHandler:^(NSArray *quakes, NSError *error) {
+        NSLog(@"Got this error: %@", error);
+        NSLog(@"Got these quakes: %@", quakes);
+    }];
 }
 
 - (void)doWorkWithOperation:(ViewControllerOperationBlock)operation

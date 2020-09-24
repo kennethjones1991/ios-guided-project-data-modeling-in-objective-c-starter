@@ -8,6 +8,9 @@
 
 #import "QuakeFetcher.h"
 #import "NSDateInterval+DayAdditions.h"
+#import "QuakeResults.h"
+#import "Quake.h"
+#import "LSIErrors.h"
 
 static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov/fdsnws/event/1/query";
 
@@ -55,7 +58,7 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
         NSError *jsonError;
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
         
-        if (!dictionary) {
+        if (!dictionary || ![dictionary isKindOfClass:NSDictionary.class]) {
             NSLog(@"Error decoding JSON: %@", jsonError);
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -65,8 +68,21 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
             return;
         }
         
+        QuakeResults *results = [[QuakeResults alloc] initWithDictionary:dictionary];
+        if (!results) {
+            NSError *apiError = errorWithMessage(@"Invalid JSON dictionary", LSIAPIError);
+            NSLog(@"Error decoding results dictionary: %@", apiError);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, apiError);
+            });
+            
+            return;
+        }
         
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(results.quakes, nil);
+        });
     }] resume];
 }
 
