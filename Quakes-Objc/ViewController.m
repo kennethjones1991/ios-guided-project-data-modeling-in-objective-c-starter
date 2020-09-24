@@ -10,9 +10,11 @@
 #import "LSILog.h"
 #import "FirstResponder.h"
 
+typedef int(^ViewControllerOperationBlock)(int a, int b);
+
 @interface ViewController ()
 
-@property (nonatomic, copy) int(^blockPropertyName)(int a, int b);
+@property (nonatomic, copy) ViewControllerOperationBlock blockPropertyName;
 
 @end
 
@@ -20,7 +22,7 @@
 
 - (void)viewDidLoad
 {
-[super viewDidLoad];
+    [super viewDidLoad];
     
     NSLog(@"Hey Quakes!");
     
@@ -37,7 +39,7 @@
     firstResponder.name = @"Dimitri";
     NSLog(@"firstResponder.name: %@", firstResponder.name);
     
-    int (^performMathOnNumbers)(int a, int b) = ^int(int a, int b) {
+    ViewControllerOperationBlock performMathOnNumbers = ^int(int a, int b) {
         return a + b;
     };
     
@@ -81,7 +83,7 @@
     // 6.
 }
 
-- (void)doWorkWithOperation:(int (^)(int a, int b))operation
+- (void)doWorkWithOperation:(ViewControllerOperationBlock)operation
 {
     // 2.
     int result = operation(5, 7);
