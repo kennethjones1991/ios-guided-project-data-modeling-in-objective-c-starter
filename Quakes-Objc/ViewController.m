@@ -81,10 +81,14 @@ typedef int(^ViewControllerOperationBlock)(int a, int b);
         return a*3 - b*2;
     }];
     // 6.
+    
+    [self doWorkWithOperation:NULL];
 }
 
 - (void)doWorkWithOperation:(ViewControllerOperationBlock)operation
 {
+    if (operation == NULL) return;
+    // if (!operation) return;
     // 2.
     int result = operation(5, 7);
     // 4.
