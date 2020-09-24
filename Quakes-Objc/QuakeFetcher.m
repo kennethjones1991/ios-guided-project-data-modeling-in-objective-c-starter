@@ -8,6 +8,16 @@
 
 #import "QuakeFetcher.h"
 
+static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov/fdsnws/event/1/query";
+
 @implementation QuakeFetcher
+
++ (void)fetchQuakesInTimeInterval:(NSDateInterval *)interval
+                completionHandler:(QuakeFetcherCompletionHandler)completionHandler
+{
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:QuakeFetcherBaseURLString];
+    
+    
+}
 
 @end
