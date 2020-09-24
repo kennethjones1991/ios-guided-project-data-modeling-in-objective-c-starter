@@ -23,6 +23,8 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
 + (void)fetchQuakesInTimeInterval:(NSDateInterval *)interval
                 completionHandler:(QuakeFetcherCompletionHandler)completionHandler
 {
+    if (!completionHandler) return;
+    
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:QuakeFetcherBaseURLString];
     
     NSISO8601DateFormatter *formatter = [[NSISO8601DateFormatter alloc] init];
@@ -43,6 +45,10 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
         if (error) {
             NSLog(@"Error fetching quakes: %@", error);
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, error);
+            });
+            
             return;
         }
         
@@ -51,6 +57,10 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
         
         if (!dictionary) {
             NSLog(@"Error decoding JSON: %@", jsonError);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil, jsonError);
+            });
             
             return;
         }
