@@ -12,13 +12,15 @@
 
 @interface ViewController ()
 
+@property (nonatomic, copy) int(^blockPropertyName)(int a, int b);
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+[super viewDidLoad];
     
     NSLog(@"Hey Quakes!");
     
@@ -34,6 +36,42 @@
     
     firstResponder.name = @"Dimitri";
     NSLog(@"firstResponder.name: %@", firstResponder.name);
+    
+    int (^performMathOnNumbers)(int a, int b) = ^int(int a, int b) {
+        return a + b;
+    };
+    
+    int result = performMathOnNumbers(5, 8);
+    NSLog(@"The sum is: %d", result);
+    
+    performMathOnNumbers = ^int(int a, int b) {
+        return a*b;
+    };
+    
+    result = performMathOnNumbers(5, 8);
+    NSLog(@"The product is: %d", result);
+    
+    self.blockPropertyName = performMathOnNumbers;
+    
+    result = self.blockPropertyName(5, 8);
+    NSLog(@"The product is: %d", result);
+    
+    __block int c = 17;
+    
+    self.blockPropertyName = ^int(int a, int b) {
+        NSLog(@"Before we do math, the first responder is: %@; c is %d", firstResponder.name, c);
+        c = 12;
+        return a*2 + b*3;
+    };
+    
+    firstResponder = [[FirstResponder alloc] init];
+    firstResponder.name = @"Irtimid";
+    
+    c = 42;
+    
+    result = self.blockPropertyName(5, 8);
+    NSLog(@"The new result is now: %d", result);
+    NSLog(@"c is now: %d", c);
 }
 
 
