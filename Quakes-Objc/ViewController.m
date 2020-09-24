@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LSILog.h"
 #import "FirstResponder.h"
+#import "NSDateInterval+DayAdditions.h"
 
 typedef int(^ViewControllerOperationBlock)(int a, int b);
 
@@ -83,6 +84,10 @@ typedef int(^ViewControllerOperationBlock)(int a, int b);
     // 6.
     
     [self doWorkWithOperation:NULL];
+    
+    NSDateInterval *dateInterval = [NSDateInterval lsi_dateIntervalByAddingDays:5];
+    
+    NSLog(@"The interval is %@", dateInterval);
 }
 
 - (void)doWorkWithOperation:(ViewControllerOperationBlock)operation
