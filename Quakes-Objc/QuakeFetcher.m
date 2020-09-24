@@ -39,10 +39,9 @@ static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov
     NSURL *url = urlComponents.URL;
     NSLog(@"Fetching Quakes: %@", url);
     
-    NSURLSessionDataTask *dataTask = [NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         <#code#>
-    }];
-    [dataTask resume];
+    }] resume];
 }
 
 @end
