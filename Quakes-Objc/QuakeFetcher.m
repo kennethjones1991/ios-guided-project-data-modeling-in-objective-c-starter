@@ -7,10 +7,18 @@
 //
 
 #import "QuakeFetcher.h"
+#import "NSDateInterval+DayAdditions.h"
 
 static NSString *const QuakeFetcherBaseURLString = @"https://earthquake.usgs.gov/fdsnws/event/1/query";
 
 @implementation QuakeFetcher
+
++ (void)fetchQuakesWithCompletionHandler:(QuakeFetcherCompletionHandler)completionHandler
+{
+    NSDateInterval *pastWeek = [NSDateInterval lsi_dateIntervalByAddingDays:-7];
+    
+    [self fetchQuakesInTimeInterval:pastWeek completionHandler:completionHandler];
+}
 
 + (void)fetchQuakesInTimeInterval:(NSDateInterval *)interval
                 completionHandler:(QuakeFetcherCompletionHandler)completionHandler
